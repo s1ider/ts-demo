@@ -15,6 +15,9 @@ def step(context, page):
 def step(context, text, field):
     ui.Input(context, field).set_value(text)
 
+@when("Buy ticket #{option:d}")
+def step(context, option):
+    pages.Landing(context).buy_ticket(option)
 
 @when("Submit form")
 def step(context):
@@ -32,3 +35,7 @@ def step(context, page):
     pages = __import__('support.pages', fromlist=[str(page.lower())])
     pages_class = getattr(pages, page)
     assert pages_class(context).is_displayed
+
+@then("Price should be '{price}'")
+def step(context, price):
+    assert pages.Registration(context).price == price
