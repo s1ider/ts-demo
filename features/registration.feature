@@ -3,6 +3,7 @@ Feature: Registration
     Background:
         Given I am on 'Registration' page
 
+    @smoke
     Scenario: Validate promo code
         When Submit form:
             | label    | value            |
@@ -13,6 +14,7 @@ Feature: Registration
             | Промокод | 12355            |
         Then Validation error message for 'Промокод' should be displayed
 
+    @smoke
     Scenario: Validate all mandatory fields
         When Submit form
         Then Validation error message for 'Фамилия' should be displayed
