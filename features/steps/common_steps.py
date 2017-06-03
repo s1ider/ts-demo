@@ -36,6 +36,6 @@ def step(context, page):
     pages_class = getattr(pages, page)
     assert pages_class(context).is_displayed
 
-@then("Price should be '{price}'")
+@then("Price should be '{price:d}'")
 def step(context, price):
     assert pages.Registration(context).price == price
